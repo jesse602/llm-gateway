@@ -18,7 +18,7 @@ spec:
       containers:
         - name: llm-gateway
           image: ghcr.io/jesse602/llm-gateway:latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
           envFrom:
