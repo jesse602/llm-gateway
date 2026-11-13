@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-gateway
+  namespace: llm-gateway
+  labels:
+    app: llm-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llm-gateway
+  template:
+    metadata:
+      labels:
+        app: llm-gateway
+    spec:
+      containers:
+        - name: llm-gateway
+          image: ghcr.io/jesse602/llm-gateway:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: llm-gateway-config
+            - secretRef:
+                name: llm-gateway-secrets
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"

@@ -10,5 +10,6 @@ venv/
 !.env.example
 *.log
 .DS_Store
+k8s/secret.yaml
 dist/
 build/
