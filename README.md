@@ -5,7 +5,7 @@ A self-hosted, OpenAI-API-compatible gateway in front of local LLMs running on
 have: API-key auth, per-key rate limiting, a bounded request queue so a single
 GPU doesn't fall over under concurrent load, and Prometheus metrics.
 
-Status: 🚧 in progress — see commit history for build-in-public steps.
+Status: deployed and serving real inference requests on a local k3s cluster.
 
 ## Why
 
