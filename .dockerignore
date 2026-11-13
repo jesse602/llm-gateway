@@ -1,0 +1,11 @@
+.venv/
+tests/
+.git/
+.github/
+k8s/
+docs/
+*.md
+.env
+.ruff_cache/
+.pytest_cache/
+__pycache__/
